@@ -1,6 +1,6 @@
 import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import Shop from "../pages/Shop";
 function Nav() {
   return (
     <>
@@ -11,10 +11,10 @@ function Nav() {
         <div class="flex-none">
           <ul class="menu menu-horizontal px-1">
             <li>
-              <a>Alle produkter</a>
+              <Link to="/">Forside</Link>
             </li>
             <li tabindex="0">
-              <Link to={"../pages/Shop.js"}>
+              <Link to="/shop">
                 Produkter
                 <svg
                   class="fill-current"
@@ -42,7 +42,7 @@ function Nav() {
               </ul>
             </li>
             <li>
-              <a>Om os</a>
+            <a>Om os</a>
             </li>
           </ul>
         </div>

@@ -9,14 +9,15 @@ import Shop from "./pages/Shop.js";
 function App() {
   return (
     <html data-theme="synthwave">
-      <Nav />
+      
       <Router>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/shop" element={<Shop />} />
-        </Routes>
-      </Router>
+      <Nav />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/shop" element={<Shop />} />
+      </Routes>
       <Footer />
+    </Router>
     </html>
   );
 }

@@ -7,7 +7,7 @@ function Nav() {
     <>
       <div class="navbar bg-base-100">
         <div class="flex-1">
-          <a class="btn btn-ghost normal-case text-xl">Memis' Kebabbix</a>
+          <Link to="/"><a class="btn btn-ghost normal-case text-xl">Shoe'Fix</a></Link>
         </div>
         <div class="flex-none">
           <ul class="menu menu-horizontal px-1">

@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Link } from "react-router-dom";
 
 function Nav() {
   return (
@@ -10,11 +11,11 @@ function Nav() {
         <div class="flex-none">
           <ul class="menu menu-horizontal px-1">
             <li>
-              <a>Item 1</a>
+              <a>Alle produkter</a>
             </li>
             <li tabindex="0">
-              <a>
-                Parent
+              <Link to={"../pages/Shop.js"}>
+                Produkter
                 <svg
                   class="fill-current"
                   xmlns="http://www.w3.org/2000/svg"
@@ -24,18 +25,24 @@ function Nav() {
                 >
                   <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
                 </svg>
-              </a>
+              </Link>
               <ul class="p-2 bg-base-100">
                 <li>
-                  <a>Submenu 1</a>
+                  <a>Nike</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Adidas</a>
+                </li>
+                <li>
+                  <a>New Balance</a>
+                </li>
+                <li>
+                  <a>Vans</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a>Item 3</a>
+              <a>Om os</a>
             </li>
           </ul>
         </div>

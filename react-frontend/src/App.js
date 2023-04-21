@@ -9,7 +9,7 @@ import Cart from "./pages/Cart.js";
 
 function App() {
   return (
-    <html data-theme="synthwave">
+    <html data-theme="night">
       <Router>
         <Nav />
         <Routes>

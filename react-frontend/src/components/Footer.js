@@ -7,7 +7,7 @@ function Footer() {
         <div class="grid grid-flow-col gap-4">
           <a class="link link-hover">Om os</a>
           <a class="link link-hover">Produkter</a>
-          <a class="link link-hover">Kontakt</a>
+          <a class="link link-hover">Kurv</a>
         </div>
         <div>
           <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>

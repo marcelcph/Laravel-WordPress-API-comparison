@@ -10,7 +10,7 @@ function Footer() {
           <a class="link link-hover">Kurv</a>
         </div>
         <div>
-          <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+          <p>Copyright © 2023 - All right reserved by Memis Kebabbix</p>
         </div>
       </footer>
     </>

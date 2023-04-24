@@ -11,7 +11,7 @@ const api = new WooCommerceRestApi({
 
 function Card() {
   const [products, setProducts] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -24,11 +24,18 @@ function Card() {
       .then((response) => {
         if (response.status === 200) {
           setProducts(response.data);
+          setLoading(false);
         }
       })
-      .catch((error) => {});
-  };
+      .catch((error) => {
+        console.error("API error:", error);
+        setLoading(false); 
+      });
 
+  };
+    if (loading) {
+      return <div>Loading...</div>;
+    }
   return (
     <>
     <div className="grid grid-cols-4 gap-4">
@@ -38,7 +45,9 @@ function Card() {
       <div className="card-body rounded-lg shadow-lg h-full">
         <div className="p-4 h-full">
           <div className="my-4">
-            <img src={product.images[0].src} alt={product.name} />
+          {product.images.length > 0 && (
+              <img src={product.images[0].src} alt={product.name} />
+            )}
             <h2 className="card-title text-lg font-bold max-h-20">{product.name}</h2>
             <p>{product.description.replace(/<\/?p>/g, '')}</p>
             <p>{product.price} DKK</p>

@@ -3,7 +3,7 @@ import React from "react";
 function Card() {
   return (
     <>
-      <div class="card card-compact w-96 bg-base-100 shadow-xl">
+      <div class="card card-compact w-72 bg-base-100 shadow-xl">
         <figure>
           <img
             src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
@@ -23,6 +23,8 @@ function Card() {
           </div>
         </div>
       </div>
+
+      
     </>
   );
 }

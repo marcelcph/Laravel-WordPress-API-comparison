@@ -14,8 +14,8 @@ function App() {
         <Nav />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/shop" element={<Shop />} />
-          <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/Shop" element={<Shop />} />
+          <Route exact path="/Cart" element={<Cart />} />
         </Routes>
         <Footer />
       </Router>

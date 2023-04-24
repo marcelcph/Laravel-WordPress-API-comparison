@@ -1,29 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-function Card() {
-  return (
-    <>
-      <div class="card card-compact w-72 bg-base-100 shadow-xl">
-        <figure>
-          <img
-            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            alt="Shoes"
-          />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Shoes!</h2>
-          <p>
-            If a dog chews shoes whose shoes does he choose?If a dog chews shoes
-            whose shoes does he choose?If a dog chews shoes whose shoes does he
-            choose?
-          </p>
-          <div class="card-actions justify-end">
-            <p class="font-bold text-lg">199 kr.</p>
-            <button class="btn btn-primary">Buy Now</button>
+
+const Card = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://bnopone.dk/wordpress/wp-json/wp/v2/posts')
+      .then((res) => setPosts(res.data));
+  }, []);
+
+  const postCards = posts.map((post) => (
+    <div key={post.id} className="card card-compact w-72 bg-base-500 shadow-xl">
+      <div className="card-body rounded-lg shadow-lg h-full">
+        <div className="p-4 h-full">
+          <div className="my-4">
+            <h2 className="card-title text-lg font-bold max-h-20">{post.title.rendered}</h2>
+            <div
+              className="text-white text-base mt-2"
+              dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+            />
           </div>
         </div>
       </div>
+    </div>
+  ));
 
+
+
+
+
+  return (
+    <>
+      <div className="flex flex-wrap justify-center m-6 ">{postCards}</div>
       
     </>
   );

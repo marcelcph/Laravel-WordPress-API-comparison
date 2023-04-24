@@ -1,7 +1,69 @@
+import { useEffect, useState } from "react";
+import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
+
+
+const api = new WooCommerceRestApi({
+  url: "https://bnopone.dk/wordpress/",
+  consumerKey: "ck_bc6eafe5f2451144acc724fb7edc886420eeeb2d",
+  consumerSecret: "cs_5c6987b6438dcb1eba5fbbf0c54d4d2bfa572a1b",
+  version: "wc/v3",
+});
+
+function Card() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  let fetchProducts = () => {
+    api
+      .get("products", {
+        per_page: 20,
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          setProducts(response.data);
+        }
+      })
+      .catch((error) => {});
+  };
+
+  return (
+    <>
+    <div className="grid grid-cols-4 gap-4">
+    {products.map((product) => {
+      return (
+     <div key={product.id} className="card card-compact w-72 bg-base-500 shadow-xl">
+      <div className="card-body rounded-lg shadow-lg h-full">
+        <div className="p-4 h-full">
+          <div className="my-4">
+            <img src={product.images[0].src} alt={product.name} />
+            <h2 className="card-title text-lg font-bold max-h-20">{product.name}</h2>
+            <p>{product.description.replace(/<\/?p>/g, '')}</p>
+            <p>{product.price} DKK</p>
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+      );
+    })}
+    </div>
+    </>
+  );
+}
+export default Card
+
+
+
+
+
+
+/*
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
-
 const Card = () => {
   const [posts, setPosts] = useState([]);
 
@@ -39,3 +101,4 @@ const Card = () => {
 }
 
 export default Card;
+*/

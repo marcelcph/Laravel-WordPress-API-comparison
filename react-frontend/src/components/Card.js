@@ -45,9 +45,7 @@ function Card() {
       <div className="card-body rounded-lg shadow-lg h-full">
         <div className="p-4 h-full">
           <div className="my-4">
-          {product.images.length > 0 && (
-              <img src={product.images[0].src} alt={product.name} />
-            )}
+            <img src={product.images[0]?.src} alt={product.name} />
             <h2 className="card-title text-lg font-bold max-h-20">{product.name}</h2>
             <p>{product.description.replace(/<\/?p>/g, '')}</p>
             <p>{product.price} DKK</p>

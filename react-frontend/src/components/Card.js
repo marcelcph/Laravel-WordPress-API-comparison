@@ -22,15 +22,18 @@ const Card = () => {
   };
 
   const extractPriceFromPrisParagraph = (html) => {
+    
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
     const prisElement = doc.getElementById('pris');
 
     if (prisElement) {
-      return prisElement.textContent;
+      const prisText = prisElement.textContent.trim();
+      const price = parseInt(prisText, 10);
+      return price;
     }
-
-    return '';
+  
+    return null;
   };
 
   const postCards = posts.map((post) => {
@@ -47,6 +50,7 @@ const Card = () => {
               dangerouslySetInnerHTML={{ __html: contentWithoutPris }}
             />
             <div className="price mt-4">{price}</div>
+            {console.log(typeof price)}
           </div>
         </div>
       </div>

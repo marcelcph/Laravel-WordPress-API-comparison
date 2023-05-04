@@ -27,8 +27,23 @@ const Products = () => {
   };
 
   const handleAddToCart = (product) => {
-    dispatch(addToCart({...product, id: product.title}));
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(product.content, "text/html");
+    const imageElement = doc.querySelector("img");
+  
+    let imageUrl = null;
+    if (imageElement) {
+      imageUrl = imageElement.getAttribute("src");
+    }
+  
+    dispatch(
+      addToCart({
+        ...product,
+        image: imageUrl,
+      })
+    );
   };
+  
 
   const extractPriceFromPrisParagraph = (html) => {
     const parser = new DOMParser();
@@ -66,13 +81,18 @@ const Products = () => {
           <div className="flex justify-between items-center px-4 py-2 ">
             <div className="price font-bold text-xl">{price} DKK</div>
             <button
-              className="btn btn-primary"
-              id="addtocart"
-              onClick={() =>
-                handleAddToCart({ id: post.id, title: post.title.rendered, price })
-              }
+            className="btn btn-primary"
+            id="addtocart"
+            onClick={() =>
+              handleAddToCart({
+                id: post.id,
+                title: post.title.rendered,
+                price,
+                content: contentWithoutPris,
+            })
+            }
             >
-              Køb
+            Køb
             </button>
           </div>
         </div>

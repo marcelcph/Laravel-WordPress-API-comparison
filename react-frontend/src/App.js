@@ -6,9 +6,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home.js";
 import Shop from "./pages/Shop.js";
 import Cart from "./pages/Cart.js";
+import { Provider } from 'react-redux';
+import Store from "./redux/store.js"
 
 function App() {
   return (
+    <Provider store={Store}>
     <html data-theme="luxury">
       <Router>
         <Nav />
@@ -20,6 +23,7 @@ function App() {
         <Footer />
       </Router>
     </html>
+    </Provider>
   );
 }
 

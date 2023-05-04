@@ -1,134 +1,87 @@
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart, removeFromCart, decreaseCart, clearCart } from '../redux/CartSlice';
+import { selectCartItems, selectCartTotalQuantity, selectCartTotalAmount } from '../redux/CartSlice';
+import { Link } from 'react-router-dom';
 
 function Cart() {
+  const cartItems = useSelector(selectCartItems);
+  const totalQuantity = useSelector(selectCartTotalQuantity);
+  const totalAmount = useSelector(selectCartTotalAmount);
+  const dispatch = useDispatch();
+
+  const handleRemoveItem = (item) => {
+    dispatch(removeFromCart(item));
+  };
+
+  const handleDecreaseItem = (item) => {
+    dispatch(decreaseCart(item));
+  };
+
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
+
   return (
     <>
       <div className="overflow-x-auto w-full">
-        <table className="table w-full">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>Produkt</th>
-              <th>Navn</th>
-              <th>Pris</th>
-              <th>Tilføj/Fjern</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* row 1 */}
-            <tr>
-              <td>
-                <div className="flex items-center space-x-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">Hart Hagerty</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                Zemlak, Daniel and Leannon
-                <br />
-              </td>
-              <td>199 kr.</td>
-              <td>
-                <div className="btn-group">
-                  <button className="btn btn-danger">Fjern</button>
-                </div>
-              </td>
-            </tr>
-            {/* row 2 */}
-            <tr>
-              <td>
-                <div className="flex items-center space-x-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">Brice Swyre</div>
+  <table className="table w-full">
+    {/* conditionally render cart items */}
+    {cartItems.length === 0 ? (
+      <div className="cart-empty">
+        <p>Your cart is empty</p>
+        <Link to="/"><span>Start shopping</span></Link>
+      </div>
+    ) : (
+    <>
+      {/* table header */}
+      <thead>
+        <tr>
+          <th>Produkt</th>
+          <th>Navn</th>
+          <th>Pris</th>
+          <th>Tilføj/Fjern</th>
+        </tr>
+      </thead>
+      {/* table body */}
+      <tbody>
+        {cartItems.map((item) => (
+          <tr key={item.id}>
+            <td>
+              <div className="flex items-center space-x-3">
+                <div className="avatar">
+                  <div className="mask mask-squircle w-12 h-12">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                    />
                   </div>
                 </div>
-              </td>
-              <td>
-                Carroll Group
-                <br />
-              </td>
-              <td>199 kr.</td>
-              <td>
-                <div className="btn-group">
-                  <button className="btn btn-danger">Fjern</button>
+                <div>
+                  <div className="font-bold">{item.name}</div>
                 </div>
-              </td>
-            </tr>
-            {/* row 3 */}
-            <tr>
-              <td>
-                <div className="flex items-center space-x-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">Marjy Ferencz</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                Rowe-Schoen
-                <br />
-              </td>
-              <td>199 kr.</td>
-              <td>
-                <div className="btn-group">
-                  <button className="btn btn-danger">Fjern</button>
-                </div>
-              </td>
-            </tr>
-            {/* row 4 */}
-            <tr>
-              <td>
-                <div className="flex items-center space-x-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">Yancy Tear</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                Wyman-Ledner
-                <br />
-              </td>
-              <td>199 kr.</td>
-              <td>
-                <div className="btn-group">
-                  <button className="btn btn-danger">Fjern</button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              </div>
+            </td>
+            <td>{item.quantity}</td>
+            <td>{item.price} kr.</td>
+            <td>
+              <div className="btn-group">
+                <button onClick={() => handleDecreaseItem(item)} className="btn btn-secondary">-</button>
+                <button onClick={() => handleRemoveItem(item)} className="btn btn-danger">Fjern</button>
+                <button onClick={() => dispatch(addToCart(item))} className="btn btn-primary">+</button>
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </>
+    )}
+  </table>
+</div>
+      <div>
+        <p>Total quantity: {totalQuantity}</p>
+        <p>Total amount: {totalAmount} kr.</p>
+        <button onClick={() => handleClearCart()} className='cartClear'>Clear Cart</button>
       </div>
     </>
   );

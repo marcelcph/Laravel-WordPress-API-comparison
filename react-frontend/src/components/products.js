@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/CartSlice';
 
-const Card = () => {
+const Products = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -10,10 +12,12 @@ const Card = () => {
       .then((res) => setPosts(res.data));
   }, []);
 
+  const dispatch = useDispatch();
+
   const removePrisParagraph = (html) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
-    const prisElement = doc.getElementById("pris");
+    const prisElement = doc.getElementById("price");
 
     if (prisElement) {
       prisElement.remove();
@@ -21,11 +25,15 @@ const Card = () => {
 
     return doc.body.innerHTML;
   };
+  
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
 
   const extractPriceFromPrisParagraph = (html) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
-    const prisElement = doc.getElementById("pris");
+    const prisElement = doc.getElementById("price");
 
     if (prisElement) {
       const prisText = prisElement.textContent.trim();
@@ -36,18 +44,18 @@ const Card = () => {
     return null;
   };
 
-  const postCards = posts.map((post) => {
+  const productss = posts.map((post) => {
     const contentWithoutPris = removePrisParagraph(post.content.rendered);
     const price = extractPriceFromPrisParagraph(post.content.rendered);
 
     return (
       <div
         key={post.id}
-        className="card card-compact w-72 bg-base-200 shadow-xl m-4"
+        className="products-compact w-72 bg-base-200 shadow-xl m-4"
       >
-        <div className="card-body rounded-lg shadow-lg h-full flex flex-col justify-between">
+        <div className="products-body rounded-lg shadow-lg h-full flex flex-col justify-between">
           <div className="p-4">
-            <h2 className="card-title text-lg font-bold max-h-20">
+            <h2 className="products-title text-lg font-bold max-h-20">
               {post.title.rendered}
             </h2>
             <div
@@ -57,7 +65,7 @@ const Card = () => {
           </div>
           <div className="flex justify-between items-center px-4 py-2 ">
             <div className="price font-bold text-xl">{price}</div>
-            <button className="btn btn-secondary">Køb</button>
+            <button className="btn btn-primary" id="addtocart" onClick={() => handleAddToCart({ title: post.title.rendered, price })}>Køb</button>
           </div>
         </div>
       </div>
@@ -66,9 +74,9 @@ const Card = () => {
 
   return (
     <>
-      <div className="flex flex-wrap justify-center m-6">{postCards}</div>
+      <div className="flex flex-wrap justify-center m-6">{productss}</div>
     </>
   );
 };
 
-export default Card;
+export default Products;

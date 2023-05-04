@@ -5,6 +5,7 @@ import { selectCartItems, selectCartTotalQuantity, selectCartTotalAmount } from 
 import { Link } from 'react-router-dom';
 
 function Cart() {
+  const cart = useSelector(state => state.cart)
   const cartItems = useSelector(selectCartItems);
   const totalQuantity = useSelector(selectCartTotalQuantity);
   const totalAmount = useSelector(selectCartTotalAmount);
@@ -25,20 +26,24 @@ function Cart() {
   return (
     <>
       <div className="overflow-x-auto w-full">
-  <table className="table w-full">
+  <table className="table w-full flex">
     {/* conditionally render cart items */}
-    {cartItems.length === 0 ? (
-      <div className="cart-empty">
-        <p>Your cart is empty</p>
-        <Link to="/"><span>Start shopping</span></Link>
-      </div>
-    ) : (
+    {cart.cartItems.length === 0 ? (
+          <div className="flex justify-center my-32 ">
+          <Link to="/Shop" className='block text-white outline text-center rounded'>
+            <div className=' p-10 rounded-lg' >
+              <h1 className='text-white text-center font-bold text-3xl mb-4'>Your cart is empty</h1>
+              <span className='text-white text-center font-bold text-2xl mb-4'>Start shopping</span>
+            </div>
+          </Link>
+          </div>
+        ) : (
     <>
       {/* table header */}
-      <thead>
+      <thead >
         <tr>
           <th>Produkt</th>
-          <th>Navn</th>
+          <th>Antal</th>
           <th>Pris</th>
           <th>Tilføj/Fjern</th>
         </tr>
@@ -46,8 +51,9 @@ function Cart() {
       {/* table body */}
       <tbody>
         {cartItems.map((item) => (
-          <tr key={item.id}>
-            <td>
+          <tr >
+            
+            <td key={item.id}>
               <div className="flex items-center space-x-3">
                 <div className="avatar">
                   <div className="mask mask-squircle w-12 h-12">
@@ -66,25 +72,31 @@ function Cart() {
             <td>{item.price} kr.</td>
             <td>
               <div className="btn-group">
-                <button onClick={() => handleDecreaseItem(item)} className="btn btn-secondary">-</button>
+                <button onClick={() => handleDecreaseItem(item)} className="btn ">-</button>
                 <button onClick={() => handleRemoveItem(item)} className="btn btn-danger">Fjern</button>
-                <button onClick={() => dispatch(addToCart(item))} className="btn btn-primary">+</button>
+                <button onClick={() => dispatch(addToCart(item))} className="btn ">+</button>
               </div>
             </td>
           </tr>
         ))}
       </tbody>
+      {/* table footer */}
+      <tfoot>
+        <tr>
+          <td></td>
+          <td>Total quantity: {totalQuantity}</td>
+          <td>Total amount: {totalAmount} kr.</td>
+          <td><button onClick={() => handleClearCart()} className='cartClear '>Clear Cart</button></td> 
+        </tr>
+      </tfoot>
+      
     </>
     )}
   </table>
-</div>
-      <div>
-        <p>Total quantity: {totalQuantity}</p>
-        <p>Total amount: {totalAmount} kr.</p>
-        <button onClick={() => handleClearCart()} className='cartClear'>Clear Cart</button>
-      </div>
+  </div>
+      
     </>
-  );
+  )
 }
 
 export default Cart;

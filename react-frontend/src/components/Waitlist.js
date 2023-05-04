@@ -44,7 +44,16 @@ function Waitlist() {
               soon as they're available. You'll also be the first to know about
               future drops.
             </p>
-            <button class="btn btn-primary">GET ON THE LIST!</button>{" "}
+<label for="my-modal-3" class="btn">GET ON THE LIST!</label>
+
+<input type="checkbox" id="my-modal-3" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box relative">
+    <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <h3 class="text-lg font-bold">Sorry!</h3>
+    <p class="py-4">Our list is full. Consider subscribing to our newsletter to be first to know about new drops!</p>
+  </div>
+</div>{" "}
             <span className="countdown font-bold text-2xl">
               <span style={{ "--value": hours }}></span>h
               <span style={{ "--value": minutes }}></span>m

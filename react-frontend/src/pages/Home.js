@@ -28,11 +28,11 @@ function Home() {
         </div>
       </div>
       <Waitlist />
-      <div class="card card-side bg-base-100 shadow-xl text-center text-6xl">
+      <div class="card card-side shadow-xl text-center text-6xl bg-base-200">
         <figure>
           <img
             src="https://images.unsplash.com/photo-1508125673219-7cec6bc90159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80"
-            alt="Movie"
+            alt="Sneaker"
           />
         </figure>
         <div class="card-body text-center justify-center items-center">

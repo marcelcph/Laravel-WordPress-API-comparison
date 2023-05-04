@@ -3,7 +3,7 @@ import React from "react";
 function Newsletter() {
   return (
     <>
-      <div class="hero min-h-1/2 bg-base-200 mt-4">
+      <div class="hero min-h-1/2 bg-base-200 mt-12">
         <div class="hero-content flex-col lg:flex-row-reverse">
           <div class="text-center lg:text-left">
             <h1 class="text-5xl font-bold">Subscribe to our newsletter now!</h1>

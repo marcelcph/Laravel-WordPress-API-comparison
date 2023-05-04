@@ -44,7 +44,7 @@ function Waitlist() {
               soon as they're available. You'll also be the first to know about
               future drops.
             </p>
-            <button class="btn btn-primary">Skriv dig op!</button>{" "}
+            <button class="btn btn-primary">GET ON THE LIST!</button>{" "}
             <span className="countdown font-bold text-2xl">
               <span style={{ "--value": hours }}></span>h
               <span style={{ "--value": minutes }}></span>m

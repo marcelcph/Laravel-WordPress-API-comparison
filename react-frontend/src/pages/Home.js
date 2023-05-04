@@ -39,7 +39,7 @@ function Home() {
           <h2 class="card-title text-center text-5xl font-bold">
             Fresh kicks, fresh start.
           </h2>
-          <div class="stats stats-vertical shadow d-flex flex-col">
+          <div class="stats stats-vertical shadow d-flex flex-col mt-16">
             <div class="stat">
               <div class="stat-title text-xl">5-star reviews</div>
               <div class="stat-value">2.4K</div>

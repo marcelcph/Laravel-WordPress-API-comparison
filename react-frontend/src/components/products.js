@@ -27,7 +27,7 @@ const Products = () => {
   };
 
   const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
+    dispatch(addToCart({...product, id: product.title}));
   };
 
   const extractPriceFromPrisParagraph = (html) => {
@@ -69,7 +69,7 @@ const Products = () => {
               className="btn btn-primary"
               id="addtocart"
               onClick={() =>
-                handleAddToCart({ title: post.title.rendered, price })
+                handleAddToCart({ id: post.id, title: post.title.rendered, price })
               }
             >
               Køb

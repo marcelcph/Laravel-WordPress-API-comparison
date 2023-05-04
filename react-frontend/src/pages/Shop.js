@@ -9,23 +9,22 @@ function Shop() {
           <div className="hero">
             <div className="hero-content flex-col lg:flex-row-reverse">
               <img
-                src="https://images.unsplash.com/photo-1610022065010-5b4a4db9273e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1586&q=80"
+                src="https://images.unsplash.com/photo-1518002171953-a080ee817e1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA1fHxzbmVha2VyfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
                 className="max-w-xl rounded-lg shadow-2xl"
                 alt="hero-shop"
               />
               <div className="col-4">
-                <h1 className="text-5xl font-bold">Box Office News!</h1>
+                <h1 className="text-5xl font-bold">
+                  Step up your sneakergame!
+                </h1>
                 <div className="py-6">
                   <p>
-                    Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                    assumenda .
-                  </p>
-                  <p>
-                    excepturi exercitationem quasi In deleniti eaque aut
-                    repudiandae et a id nisi.
+                    Our collection features top brands and styles that cater to
+                    all tastes and preferences. Whether you're into classic
+                    sneakers, retro styles, or the latest trends, we have
+                    something for everyone.
                   </p>
                 </div>
-                <button className="btn btn-primary">Get Started</button>
               </div>
             </div>
           </div>

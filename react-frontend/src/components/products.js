@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../redux/CartSlice';
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/CartSlice";
 
 const Products = () => {
   const [posts, setPosts] = useState([]);
@@ -25,7 +25,7 @@ const Products = () => {
 
     return doc.body.innerHTML;
   };
-  
+
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
@@ -64,8 +64,16 @@ const Products = () => {
             />
           </div>
           <div className="flex justify-between items-center px-4 py-2 ">
-            <div className="price font-bold text-xl">{price}</div>
-            <button className="btn btn-primary" id="addtocart" onClick={() => handleAddToCart({ title: post.title.rendered, price })}>Køb</button>
+            <div className="price font-bold text-xl">{price} DKK</div>
+            <button
+              className="btn btn-primary"
+              id="addtocart"
+              onClick={() =>
+                handleAddToCart({ title: post.title.rendered, price })
+              }
+            >
+              Køb
+            </button>
           </div>
         </div>
       </div>

@@ -32,7 +32,7 @@ function Waitlist() {
   return (
     <>
       <div class="hero bg-base-100 p-16">
-        <div class="hero-content flex-col lg:flex-row">
+        <div class="hero-content flex-col lg:flex-row mt-32 mb-32">
           <img
             src="https://images.unsplash.com/photo-1524532787116-e70228437bbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
             class="max-w-sm rounded-lg shadow-2xl"
